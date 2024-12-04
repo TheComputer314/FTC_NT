@@ -1,0 +1,2 @@
+`cmake -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DWITH_WPILIB=OFF -DWITH_GUI=OFF -DWITH_CSCORE=OFF -DWITH_TESTS=OFF -DWITH_SIMULATION_MODULES=OFF -DWITH_PROTOBUF=OFF -DWITH_JAVA=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_TOOLCHAIN_FILE=C:/Users/[user]/AppData/Local/Android/Sdk/ndk/27.2.12479018/build/cmake/android.toolchain.cmake -DANDROID_ABI="arm64-v8a" -DANDROID_PLATFORM=android-24 -S C:\Users\[user]\Documents\Github\allwpilib -B C:\Users\[user]\Documents\Github\allwpilib_cmake`
+`cmake --build C:\Users\[user]\Documents\Github\allwpilib_cmake --parallel 8`
