@@ -4,7 +4,6 @@
 package ftc.nt;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
 import ftc.lib.trobotix.BaseOpMode;
 
 @TeleOp

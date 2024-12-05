@@ -5,10 +5,13 @@ package ftc.lib.wpilib.math.kinematics;
 
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
+import edu.wpi.first.util.struct.StructSerializable;
 import ftc.lib.wpilib.math.geometry.Pose2d;
 import ftc.lib.wpilib.math.geometry.Rotation2d;
 import ftc.lib.wpilib.math.geometry.Translation2d;
 import ftc.lib.wpilib.math.geometry.Twist2d;
+import ftc.lib.wpilib.math.kinematics.struct.ChassisSpeedsStruct;
+import java.util.Objects;
 
 /**
  * Represents the speed of a robot chassis. Although this class contains similar members compared to
@@ -19,7 +22,7 @@ import ftc.lib.wpilib.math.geometry.Twist2d;
  * component because it can never move sideways. Holonomic drivetrains such as swerve and mecanum
  * will often have all three components.
  */
-public class ChassisSpeeds {
+public class ChassisSpeeds implements StructSerializable {
   /** Velocity along the x-axis. (Fwd is +) */
   public double vxMetersPerSecond;
 
@@ -31,6 +34,9 @@ public class ChassisSpeeds {
 
   /** Constructs a ChassisSpeeds with zeros for dx, dy, and theta. */
   public ChassisSpeeds() {}
+
+  /** ChassisSpeeds struct for serialization. */
+  public static final ChassisSpeedsStruct struct = new ChassisSpeedsStruct();
 
   /**
    * Constructs a ChassisSpeeds object.
@@ -258,6 +264,20 @@ public class ChassisSpeeds {
   public ChassisSpeeds div(double scalar) {
     return new ChassisSpeeds(
         vxMetersPerSecond / scalar, vyMetersPerSecond / scalar, omegaRadiansPerSecond / scalar);
+  }
+
+  @Override
+  public final int hashCode() {
+    return Objects.hash(vxMetersPerSecond, vyMetersPerSecond, omegaRadiansPerSecond);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return o == this
+        || o instanceof ChassisSpeeds c
+            && vxMetersPerSecond == c.vxMetersPerSecond
+            && vyMetersPerSecond == c.vyMetersPerSecond
+            && omegaRadiansPerSecond == c.omegaRadiansPerSecond;
   }
 
   @SuppressLint("DefaultLocale")

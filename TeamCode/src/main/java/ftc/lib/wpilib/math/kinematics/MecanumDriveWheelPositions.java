@@ -5,11 +5,14 @@ package ftc.lib.wpilib.math.kinematics;
 
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
+import edu.wpi.first.util.struct.StructSerializable;
 import ftc.lib.wpilib.math.MathUtil;
+import ftc.lib.wpilib.math.kinematics.struct.MecanumDriveWheelPositionsStruct;
 import java.util.Objects;
 
 /** Represents the wheel positions for a mecanum drive drivetrain. */
-public class MecanumDriveWheelPositions implements WheelPositions<MecanumDriveWheelPositions> {
+public class MecanumDriveWheelPositions
+    implements WheelPositions<MecanumDriveWheelPositions>, StructSerializable {
   /** Distance measured by the front left wheel. */
   public double frontLeftMeters;
 
@@ -21,6 +24,10 @@ public class MecanumDriveWheelPositions implements WheelPositions<MecanumDriveWh
 
   /** Distance measured by the rear right wheel. */
   public double rearRightMeters;
+
+  /** MecanumDriveWheelPositions struct for serialization. */
+  public static final MecanumDriveWheelPositionsStruct struct =
+      new MecanumDriveWheelPositionsStruct();
 
   /** Constructs a MecanumDriveWheelPositions with zeros for all member fields. */
   public MecanumDriveWheelPositions() {}

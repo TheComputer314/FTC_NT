@@ -5,7 +5,9 @@ package ftc.lib.wpilib.math.geometry;
 
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
+import edu.wpi.first.util.struct.StructSerializable;
 import ftc.lib.wpilib.math.MathUtil;
+import ftc.lib.wpilib.math.geometry.struct.Rotation2dStruct;
 import ftc.lib.wpilib.math.interpolation.Interpolatable;
 import ftc.lib.wpilib.math.utils.Units;
 import java.util.Objects;
@@ -17,7 +19,7 @@ import java.util.Objects;
  * return 361 degrees. This allows algorithms that wouldn't want to see a discontinuity in the
  * rotations as it sweeps past from 360 to 0 on the second time around.
  */
-public class Rotation2d implements Interpolatable<Rotation2d> {
+public class Rotation2d implements Interpolatable<Rotation2d>, StructSerializable {
   /**
    * A preallocated Rotation2d representing no rotation.
    *
@@ -299,4 +301,7 @@ public class Rotation2d implements Interpolatable<Rotation2d> {
   public Rotation2d interpolate(Rotation2d endValue, double t) {
     return plus(endValue.minus(this).times(MathUtil.clamp(t, 0, 1)));
   }
+
+  /** Rotation2d struct for serialization. */
+  public static final Rotation2dStruct struct = new Rotation2dStruct();
 }

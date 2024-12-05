@@ -4,10 +4,12 @@
 package ftc.lib.wpilib.math.geometry;
 
 import androidx.annotation.NonNull;
+import edu.wpi.first.util.struct.StructSerializable;
+import ftc.lib.wpilib.math.geometry.struct.Transform2dStruct;
 import java.util.Objects;
 
 /** Represents a transformation for a Pose2d in the pose's frame. */
-public class Transform2d {
+public class Transform2d implements StructSerializable {
   private final Translation2d m_translation;
   private final Rotation2d m_rotation;
 
@@ -164,4 +166,7 @@ public class Transform2d {
   public int hashCode() {
     return Objects.hash(m_translation, m_rotation);
   }
+
+  /** Transform2d struct for serialization. */
+  public static final Transform2dStruct struct = new Transform2dStruct();
 }

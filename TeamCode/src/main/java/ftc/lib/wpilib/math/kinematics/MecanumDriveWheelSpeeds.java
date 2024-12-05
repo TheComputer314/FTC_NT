@@ -5,6 +5,7 @@ package ftc.lib.wpilib.math.kinematics;
 
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
+import ftc.lib.wpilib.math.kinematics.struct.MecanumDriveWheelSpeedsStruct;
 
 /** Represents the wheel speeds for a mecanum drive drivetrain. */
 public class MecanumDriveWheelSpeeds {
@@ -19,6 +20,9 @@ public class MecanumDriveWheelSpeeds {
 
   /** Speed of the rear right wheel. */
   public double rearRightMetersPerSecond;
+
+  /** MecanumDriveWheelSpeeds struct for serialization. */
+  public static final MecanumDriveWheelSpeedsStruct struct = new MecanumDriveWheelSpeedsStruct();
 
   /** Constructs a MecanumDriveWheelSpeeds with zeros for all member fields. */
   public MecanumDriveWheelSpeeds() {}

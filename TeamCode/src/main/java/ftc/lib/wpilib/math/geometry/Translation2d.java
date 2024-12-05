@@ -5,9 +5,11 @@ package ftc.lib.wpilib.math.geometry;
 
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
+import edu.wpi.first.util.struct.StructSerializable;
 import ftc.lib.wpilib.math.MathUtil;
 import ftc.lib.wpilib.math.VecBuilder;
 import ftc.lib.wpilib.math.Vector;
+import ftc.lib.wpilib.math.geometry.struct.Translation2dStruct;
 import ftc.lib.wpilib.math.interpolation.Interpolatable;
 import ftc.lib.wpilib.math.numbers.N2;
 import java.util.Collections;
@@ -21,7 +23,7 @@ import java.util.Objects;
  * <p>This assumes that you are using conventional mathematical axes. When the robot is at the
  * origin facing in the positive X direction, forward is positive X and left is positive Y.
  */
-public class Translation2d implements Interpolatable<Translation2d> {
+public class Translation2d implements Interpolatable<Translation2d>, StructSerializable {
   /**
    * A preallocated Translation2d representing the origin.
    *
@@ -250,4 +252,7 @@ public class Translation2d implements Interpolatable<Translation2d> {
         MathUtil.interpolate(this.getX(), endValue.getX(), t),
         MathUtil.interpolate(this.getY(), endValue.getY(), t));
   }
+
+  /** Translation2d struct for serialization. */
+  public static final Translation2dStruct struct = new Translation2dStruct();
 }

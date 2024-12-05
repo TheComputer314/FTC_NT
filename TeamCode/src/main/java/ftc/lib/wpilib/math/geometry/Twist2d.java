@@ -7,13 +7,16 @@ import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import java.util.Objects;
 
+import edu.wpi.first.util.struct.StructSerializable;
+import ftc.lib.wpilib.math.geometry.struct.Twist2dStruct;
+
 /**
  * A change in distance along a 2D arc since the last pose update. We can use ideas from
  * differential calculus to create new Pose2d objects from a Twist2d and vice versa.
  *
  * <p>A Twist can be used to represent a difference between two poses.
  */
-public class Twist2d {
+public class Twist2d implements StructSerializable {
   /** Linear "dx" component. */
   public double dx;
 
@@ -66,4 +69,7 @@ public class Twist2d {
   public int hashCode() {
     return Objects.hash(dx, dy, dtheta);
   }
+
+  /** Twist2d struct for serialization. */
+  public static final Twist2dStruct struct = new Twist2dStruct();
 }

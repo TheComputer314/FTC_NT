@@ -3,6 +3,8 @@
 
 package ftc.lib.wpilib.math.geometry;
 
+import edu.wpi.first.util.struct.StructSerializable;
+import ftc.lib.wpilib.math.geometry.struct.Pose2dStruct;
 import ftc.lib.wpilib.math.interpolation.Interpolatable;
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 /** Represents a 2D pose containing translational and rotational elements. */
-public class Pose2d implements Interpolatable<Pose2d> {
+public class Pose2d implements Interpolatable<Pose2d>, StructSerializable {
   /**
    * A preallocated Pose2d representing the origin.
    *
@@ -300,4 +302,7 @@ public class Pose2d implements Interpolatable<Pose2d> {
       return this.exp(scaledTwist);
     }
   }
+
+  /** Pose2d struct for serialization. */
+  public static final Pose2dStruct struct = new Pose2dStruct();
 }

@@ -34,6 +34,7 @@ public abstract class BaseOpMode extends LinearOpMode {
       NetworkTableInstance.getDefault().flushLocal();
     }
     EndableThread.endThreads();
+    statePublisher.close();
   }
 
   protected abstract void startup();
