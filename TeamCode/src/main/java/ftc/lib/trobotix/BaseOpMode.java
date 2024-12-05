@@ -20,21 +20,18 @@ public abstract class BaseOpMode extends LinearOpMode {
 
   @Override
   public final void runOpMode() {
-    var statePublisher = NetworkTableInstance.getDefault().getStringTopic("State").publish();
-    statePublisher.set("Initializing");
-    NetworkTableInstance.getDefault().flushLocal();
+    Telemetry.put("Status", "Startup");
     startup();
-    statePublisher.set("Waiting_For_Start");
-    NetworkTableInstance.getDefault().flushLocal();
+    Telemetry.put("Status", "Waiting for start");
     waitForStart();
     EndableThread.startThreads();
-    statePublisher.set("Running");
+    Telemetry.put("Status", "Running");
     while (opModeIsActive()) {
       CommandScheduler.getInstance().run();
       NetworkTableInstance.getDefault().flushLocal();
     }
     EndableThread.endThreads();
-    statePublisher.close();
+    Telemetry.put("Status", "Stopped");
   }
 
   protected abstract void startup();
