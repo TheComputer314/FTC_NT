@@ -1,7 +1,7 @@
 // Copyright (c) 2024-2025 FTC 8696
 // All rights reserved.
 
-package ftc.lib.wpilib.math.utils;
+package ftc.lib.wpilib.math.util;
 
 /** Utility class that converts between commonly used units in FRC. */
 public final class Units {

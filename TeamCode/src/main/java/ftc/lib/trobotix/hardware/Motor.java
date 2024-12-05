@@ -11,8 +11,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import ftc.lib.trobotix.Utils;
 import ftc.lib.wpilib.math.MathUtil;
 import ftc.lib.wpilib.math.filter.LinearFilter;
-import ftc.robotcore.external.navigation.CurrentUnit;
 import java.util.ArrayList;
+import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 
 /** Wrapper for {@link DcMotorEx} for extra functionality and cleaner code. */
 public class Motor {

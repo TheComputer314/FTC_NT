@@ -4,11 +4,11 @@
 package ftc.lib.trobotix;
 
 import edu.wpi.first.networktables.*;
+import edu.wpi.first.util.CircularBuffer;
 import edu.wpi.first.util.struct.Struct;
 import edu.wpi.first.util.struct.StructSerializable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * A class for easy publishing of data to NetworkTables. Inspired by DogLog.
@@ -80,18 +80,17 @@ public final class Telemetry {
 
     private static TelemetryThread getInstance() {
       if (instance == null) {
-        instance = new TelemetryThread(128);
+        instance = new TelemetryThread(256);
         instance.start();
       }
       return instance;
     }
 
-    private final NetworkTable table;
-    private final LinkedBlockingQueue<QueuedEntry> queue;
+    private final NetworkTable table = NetworkTableInstance.getDefault().getTable("Outputs");
+    private final CircularBuffer<QueuedEntry> circularQueue;
 
     TelemetryThread(int size) {
-      this.table = NetworkTableInstance.getDefault().getTable("Outputs");
-      this.queue = new LinkedBlockingQueue<>(size);
+      circularQueue = new CircularBuffer<>(size);
       setDaemon(true);
       setName("Telemetry Thread");
     }
@@ -100,15 +99,25 @@ public final class Telemetry {
     public void run() {
       //noinspection InfiniteLoopStatement
       while (true) {
-        try {
-          queue.take().publish(table);
-        } catch (InterruptedException ignored) {
+        synchronized (circularQueue) {
+          new IntegerQueuedEntry("Telemetry Queue Size", circularQueue.size()).publish(table);
+          for (int i = 0; i < circularQueue.size(); i++) {
+            circularQueue.get(i).publish(table);
+          }
+          circularQueue.clear();
         }
+        NetworkTableInstance.getDefault().flushLocal();
+        try {
+          //noinspection BusyWait
+          Thread.sleep(100);
+        } catch (Exception ignored) {
+        }
+        Thread.yield();
       }
     }
 
-    public void add(QueuedEntry entry) {
-      queue.offer(entry);
+    void add(QueuedEntry entry) {
+      circularQueue.addLast(entry);
     }
 
     @Override

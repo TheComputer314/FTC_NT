@@ -6,7 +6,7 @@ package ftc.lib.trobotix;
 import ftc.lib.wpilib.math.geometry.Pose2d;
 import ftc.lib.wpilib.math.geometry.Rotation2d;
 import ftc.lib.wpilib.math.geometry.Translation2d;
-import ftc.lib.wpilib.math.utils.Units;
+import ftc.lib.wpilib.math.util.Units;
 
 public class Utils {
   private Utils() {}

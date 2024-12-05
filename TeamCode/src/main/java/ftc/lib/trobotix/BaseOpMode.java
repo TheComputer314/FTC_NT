@@ -5,7 +5,6 @@ package ftc.lib.trobotix;
 
 import com.outoftheboxrobotics.photoncore.Photon;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import ftc.lib.wpilib.commands.CommandScheduler;
 import ftc.lib.wpilib.commands.button.Trigger;
 
@@ -28,7 +27,6 @@ public abstract class BaseOpMode extends LinearOpMode {
     Telemetry.put("Status", "Running");
     while (opModeIsActive()) {
       CommandScheduler.getInstance().run();
-      NetworkTableInstance.getDefault().flushLocal();
     }
     EndableThread.endThreads();
     Telemetry.put("Status", "Stopped");

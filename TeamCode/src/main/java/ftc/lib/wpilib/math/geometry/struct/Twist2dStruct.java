@@ -1,9 +1,11 @@
-package ftc.lib.wpilib.math.geometry.struct;
+// Copyright (c) 2024-2025 FTC 8696
+// All rights reserved.
 
-import java.nio.ByteBuffer;
+package ftc.lib.wpilib.math.geometry.struct;
 
 import edu.wpi.first.util.struct.Struct;
 import ftc.lib.wpilib.math.geometry.Twist2d;
+import java.nio.ByteBuffer;
 
 public class Twist2dStruct implements Struct<Twist2d> {
   @Override

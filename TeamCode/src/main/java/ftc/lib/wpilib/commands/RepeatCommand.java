@@ -3,7 +3,7 @@
 
 package ftc.lib.wpilib.commands;
 
-import static ftc.lib.wpilib.util.ErrorMessages.requireNonNullParam;
+import static edu.wpi.first.util.ErrorMessages.requireNonNullParam;
 
 /**
  * A command that runs another command repeatedly, restarting it when it ends, until this command is

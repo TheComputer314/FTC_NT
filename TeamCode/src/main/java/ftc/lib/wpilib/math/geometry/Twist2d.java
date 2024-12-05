@@ -5,10 +5,9 @@ package ftc.lib.wpilib.math.geometry;
 
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
-import java.util.Objects;
-
 import edu.wpi.first.util.struct.StructSerializable;
 import ftc.lib.wpilib.math.geometry.struct.Twist2dStruct;
+import java.util.Objects;
 
 /**
  * A change in distance along a 2D arc since the last pose update. We can use ideas from

@@ -3,7 +3,7 @@
 
 package ftc.lib.wpilib.math.filter;
 
-import ftc.lib.wpilib.math.utils.DoubleCircularBuffer;
+import edu.wpi.first.util.DoubleCircularBuffer;
 import java.util.Arrays;
 import org.ejml.simple.SimpleMatrix;
 

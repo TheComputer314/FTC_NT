@@ -3,7 +3,7 @@
 
 package ftc.lib.wpilib.commands;
 
-import static ftc.lib.wpilib.util.ErrorMessages.requireNonNullParam;
+import static edu.wpi.first.util.ErrorMessages.requireNonNullParam;
 
 import java.util.Map;
 import java.util.function.Supplier;

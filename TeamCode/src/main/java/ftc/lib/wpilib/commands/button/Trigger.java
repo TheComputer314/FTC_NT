@@ -3,7 +3,7 @@
 
 package ftc.lib.wpilib.commands.button;
 
-import static ftc.lib.wpilib.util.ErrorMessages.requireNonNullParam;
+import static edu.wpi.first.util.ErrorMessages.requireNonNullParam;
 
 import ftc.lib.wpilib.commands.Command;
 import ftc.lib.wpilib.commands.CommandScheduler;

@@ -3,8 +3,8 @@
 
 package ftc.lib.wpilib.commands;
 
+import static edu.wpi.first.util.ErrorMessages.requireNonNullParam;
 import static ftc.lib.wpilib.commands.Command.InterruptionBehavior;
-import static ftc.lib.wpilib.util.ErrorMessages.requireNonNullParam;
 
 import ftc.lib.wpilib.event.EventLoop;
 import java.util.ArrayList;
